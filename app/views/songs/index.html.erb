@@ -1,0 +1,8 @@
+<h1>Top Songs</h1>
+<%= link_to 'Create Song', new_billboard_song_path %>
+
+<% @songs.each do |s| %>
+  <ul>
+<%= link_to s.name, [@billboard, @song] %>
+  </ul>
+<% end %>

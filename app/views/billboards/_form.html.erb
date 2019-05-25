@@ -1,0 +1,7 @@
+<h1><%= @billboard.id ? 'Edit' : 'Create' %></h1>
+
+<%= form_for @billboard do |b| %>
+  <%= b.label :name %>
+  <%= b.text_field :name, required: true, autofocus: true %>
+  <%= b.submit %>
+<% end %>
