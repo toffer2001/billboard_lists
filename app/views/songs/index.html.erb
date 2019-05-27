@@ -1,8 +1,5 @@
 <h1><%= @billboard.name %></h1>
       <br />
-      <%= link_to 'Add New Song', new_billboard_song_path(@billboard) %>
-      <br />
-      <br />
       <table class="table table-hover">
         <thead>
           <tr>
@@ -21,4 +18,4 @@
         </tbody>
       </table>
 
-<%= link_to 'Home', billboards_path %>
+<%= link_to 'Add New Song', new_billboard_song_path(@billboard) %>
