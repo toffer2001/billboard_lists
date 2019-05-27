@@ -4,7 +4,7 @@ class SongsController < ApplicationController
   before_action :set_song, only: [:show, :edit, :update, :destroy]
 
   def index
-    @songs = @billboard.songs
+    @songs = @billboard.songs.order(:rank)
   end
 
   def show
@@ -14,6 +14,7 @@ class SongsController < ApplicationController
   def new
     @song = @billboard.songs.new
     render partial: 'form'
+
   end
 
   def create
@@ -52,12 +53,13 @@ class SongsController < ApplicationController
   def set_billboard
     @billboard = Billboard.find(params[:billboard_id])
   end
+
   
   def set_song
     @song = Song.find(params[:id])
   end
 
   def song_params
-    params.require(:song).permit(:title)
+    params.require(:song).permit(:title, :rank)
   end
 end

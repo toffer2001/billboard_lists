@@ -10,15 +10,16 @@
 </head>
 <body>
 <div class="container">
-<h1><%= @billboard.id ? 'Edit Billboard: ' + @billboard.name : 'Create a New Billboard' %></h1>
+<h1><%= @artist.id ? 'Edit: ' + @artist.name : 'Create New Artist' %></h1>
 <br />
-<%= form_for @billboard do |b| %>
+<%= form_for [@song, @artist] do |artist| %>
   <div class="form-group">
-  <%= b.label :name %>
-  <%= b.text_field :name, required: true, autofocus: true, class: 'form-control' %>
+  <%= artist.label :name %>
+  <%= artist.text_field :name, required: true, autofocus: true %>
   </div>
+  
   <%= submit_tag("Submit", :id=>"button", :class=>"btn btn-primary", :name=>"submit") %>
-  <!-- b.submit  --!>
-<% end %>
-</div>
-</body>
+  <!-- s.submit  --!>
+  <% end %>
+  </div>
+  </body>

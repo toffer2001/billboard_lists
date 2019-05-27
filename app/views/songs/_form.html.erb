@@ -1,6 +1,30 @@
-<h1><%= @song.id ? 'Edit' : 'Create' %></h1>
-<%= form_for @song do |s| %>
-  <%= s.label :name %>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+<h1><%= @song.id ? 'Edit Song: ' + @song.title : 'Create Song' %></h1>
+<br />
+<%= form_for [@billboard, @song] do |s| %>
+  <div class="form-group">
+  <%= s.label :title %>
   <%= s.text_field :title, required: true, autofocus: true %>
-  <%= s.submit %>
+  </div>
+  
+  <div class="form-group">
+  <%= s.label :rank %>
+  <%= s.number_field :rank, required: true, autofocus: true%>
+  </div>
+
+  <%= submit_tag("Submit", :id=>"button", :class=>"btn btn-primary", :name=>"submit") %>
+  <!-- s.submit  --!>
   <% end %>
+  </div>
+  </body>
