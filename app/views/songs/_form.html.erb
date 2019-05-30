@@ -24,19 +24,37 @@
 <div class="container">
 <h1><%= @song.id ? 'Edit Song: ' + @song.title : 'Create Song' %></h1>
 <br />
-<%= form_for [@billboard, @song] do |s| %>
+<%= form_with(model: [@song, @billboard], local: true ) do |s| %>
   <div class="form-group">
-  <%= s.label :title %>
-  <%= s.text_field :title, required: true, autofocus: true %>
+    <%= s.label :title %>
+    <%= s.text_field :title, required: true, autofocus: true %>
   </div>
   
   <div class="form-group">
-  <%= s.label :rank %>
-  <%= s.number_field :rank, required: true, autofocus: true%>
+    <%= s.label :rank %>
+    <%= s.number_field :rank, required: true, autofocus: true%>
   </div>
 
+  <div class="form-group">
+    <label for="artist-list">Select Artist:</label>
+    <select class="form-control" id="artist-list">
+    <% @artists.each do |a| %>
+      <option><%= a.name %></option>
+    <% end %>
+    </select>
+  </div>
+
+    <div class="form-group">
+    <label for="billboard-list">Select Billboard:</label>
+    <select class="form-control" id="billboard-list">
+    <% @billboards.each do |b| %>
+      <option><%= b.name %></option>
+    <% end %>
+    </select>
+  </div>
+
+
   <%= submit_tag("Submit", :id=>"button", :class=>"btn btn-primary", :name=>"submit") %>
-  <!-- s.submit  --!>
   <% end %>
   </div>
   </body>

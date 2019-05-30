@@ -1,9 +1,9 @@
 class ArtistsController < ApplicationController
-before_action :set_song
+# before_action :set_song
 before_action :set_artist, only: [:show, :update, :edit, :destroy]
 
   def index
-    @artists = Artist.all.order(:name)
+    @artists = Artist.all
   end
 
   def show
@@ -11,14 +11,14 @@ before_action :set_artist, only: [:show, :update, :edit, :destroy]
   end
 
   def new
-    @artist = @song.artists.new
+    @artist = Artist.new
     render partial: 'form'
   end
 
   def create
-    @artist = @song.artists.new(artist_params)
+    @artist = Artist.new(artist_params)
     if @artist.save
-      redirect_to [@song, @artist]
+      redirect_to artist_path(@artist)
     else
       render :new
     end
@@ -32,7 +32,7 @@ before_action :set_artist, only: [:show, :update, :edit, :destroy]
   def update
     # before_action
     if @artist.update(artist_params)
-      redirect_to [@song, @artist]
+      redirect_to artist_path(@artist)
     else
       render :edit
     end
@@ -42,14 +42,14 @@ before_action :set_artist, only: [:show, :update, :edit, :destroy]
   def destroy
     # before_action
     @artist.destroy
-    redirect_to song_artists_path
+    redirect_to artists_path
   end
 
   private
 
-  def set_song
-    @song = Song.find(params[:song_id])
-  end
+  # def set_song
+  #   @song = Song.find(params[:song_id])
+  # end
 
   def set_artist
     @artist = Artist.find(params[:id])

@@ -22,5 +22,7 @@ root 'billboards#index'
   resources :songs do
     resources :artists
   end
+
+  resources :artists
   
 end
