@@ -1,7 +1,7 @@
 class BillboardsController < ApplicationController
   
   before_action :set_billboard, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_song, only: [:show]
   def index
     @billboards = Billboard.all.order(:name)
 
@@ -56,6 +56,10 @@ class BillboardsController < ApplicationController
 
   def billboard_params
     params.require(:billboard).permit(:name)
+  end
+
+    def set_song
+    @songs = @billboard.songs.all
   end
 
 end

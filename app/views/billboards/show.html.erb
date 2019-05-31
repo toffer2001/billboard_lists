@@ -1,7 +1,21 @@
 <h1><%= @billboard.name %></h1>
-<br />
-<%= link_to "View Songs", billboard_songs_path(@billboard) %>
-<br />
-<%= link_to 'Back', billboards_path %>
+      <br />
+      <table class="table table-hover">
+        <thead>
+          <tr>
+          <th scope="col">Position</th>
+            <th scope="col">Song Title</th>
+          </tr>
+        </thead>
+        <tbody>
 
-<!-- Skipping this page for now and going straight to songs index.html.erb list--!>
+      <% @songs.each do |song| %>
+        <tr>
+          <td><%= song.rank %></td>
+          <td><%= link_to song.title, billboard_song_path(@billboard, song) %></td>
+        </tr>
+      <% end %>
+        </tbody>
+      </table>
+
+<%= link_to 'Add New Song', new_billboard_song_path(@billboard) %>

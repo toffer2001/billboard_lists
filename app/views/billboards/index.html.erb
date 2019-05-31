@@ -15,7 +15,6 @@
 
 <% @billboards.each do |b| %>
     <tr>
-      <!-- <td><li class="list-group-item"><%= link_to b.name, b %></td> --!>
       <td><%= link_to b.name, billboard_songs_path(b) %></td>
       <td><%= link_to 'Edit', edit_billboard_path(b) %></td>
       <td><%= link_to 'Delete', b, method: :delete %></td>

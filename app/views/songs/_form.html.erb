@@ -24,7 +24,7 @@
 <div class="container">
 <h1><%= @song.id ? 'Edit Song: ' + @song.title : 'Create Song' %></h1>
 <br />
-<%= form_with(model: [@song, @billboard], local: true ) do |s| %>
+<%= form_with(model: [@billboard, @song], local: true ) do |s| %>
   <div class="form-group">
     <%= s.label :title %>
     <%= s.text_field :title, required: true, autofocus: true %>

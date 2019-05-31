@@ -19,8 +19,8 @@ root 'billboards#index'
     resources :songs
   end
     
-  resources :songs do
-    resources :artists
+  resources :artists do
+    resources :songs
   end
 
   resources :artists
